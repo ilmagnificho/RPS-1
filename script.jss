@@ -1,13 +1,22 @@
 let userChoices = [];
 let computerChoice;
-let countdown;
 let countdownInterval;
+let minusCountdownInterval;
+
+document.getElementById('startButton').addEventListener('click', startGame);
+
+function startGame() {
+    document.getElementById('startScreen').style.display = 'none';
+    document.getElementById('choiceScreen').style.display = 'block';
+    userChoices = [];
+    startCountdown(2, selectChoice);
+}
 
 function startCountdown(duration, callback) {
     let timer = duration, seconds;
-    countdown = document.getElementById('countdown');
+    const countdown = document.getElementById('countdown');
     countdown.style.display = 'block';
-    
+
     countdownInterval = setInterval(function () {
         seconds = parseInt(timer % 60, 10);
         seconds = seconds < 10 ? "0" + seconds : seconds;
@@ -20,27 +29,35 @@ function startCountdown(duration, callback) {
     }, 1000);
 }
 
-document.getElementById('rock').addEventListener('click', () => selectChoice('rock'));
-document.getElementById('paper').addEventListener('click', () => selectChoice('paper'));
-document.getElementById('scissors').addEventListener('click', () => selectChoice('scissors'));
-
-function selectChoice(choice) {
-    if (userChoices.length < 2) {
-        userChoices.push(choice);
-        if (userChoices.length === 2) {
-            alert('Time to choose one to remove!');
-            clearInterval(countdownInterval);
-            startCountdown(1, removeChoicePrompt);
+function selectChoice() {
+    document.getElementById('choices').addEventListener('click', function (event) {
+        if (userChoices.length < 2 && event.target.tagName === 'IMG') {
+            userChoices.push(event.target.id);
+            if (userChoices.length === 2) {
+                clearInterval(countdownInterval);
+                document.getElementById('choiceScreen').style.display = 'none';
+                document.getElementById('minusOneScreen').style.display = 'block';
+                startMinusCountdown(1);
+            }
         }
-    } else {
-        alert('You have already made two choices.');
-    }
+    });
 }
 
-function removeChoicePrompt() {
-    document.getElementById('choices').style.display = 'none';
-    document.getElementById('minusOne').style.display = 'block';
-    startCountdown(1, () => alert('Time is up! You must remove an option!'));
+function startMinusCountdown(duration) {
+    let timer = duration, seconds;
+    const minusCountdown = document.getElementById('minusCountdown');
+    minusCountdown.style.display = 'block';
+
+    minusCountdownInterval = setInterval(function () {
+        seconds = parseInt(timer % 60, 10);
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        minusCountdown.textContent = seconds;
+
+        if (--timer < 0) {
+            clearInterval(minusCountdownInterval);
+            alert('Time is up! You must remove an option!');
+        }
+    }, 1000);
 }
 
 document.getElementById('removeRock').addEventListener('click', () => removeChoice('rock'));
@@ -64,17 +81,27 @@ function getComputerChoice() {
 
 function determineWinner() {
     const userFinalChoice = userChoices[0]; // Remaining choice
-    const result = document.getElementById('result');
-    
+    const resultMessage = document.getElementById('resultMessage');
+    const resultScreen = document.getElementById('resultScreen');
+
     if (userFinalChoice === computerChoice) {
-        result.textContent = 'It\'s a tie!';
+        resultMessage.textContent = 'It\'s a tie!';
     } else if (
         (userFinalChoice === 'rock' && computerChoice === 'scissors') ||
         (userFinalChoice === 'paper' && computerChoice === 'rock') ||
         (userFinalChoice === 'scissors' && computerChoice === 'paper')
     ) {
-        result.textContent = 'You win!';
+        resultMessage.textContent = 'You win!';
     } else {
-        result.textContent = 'Computer wins!';
+        resultMessage.textContent = 'Computer wins!';
     }
+
+    document.getElementById('minusOneScreen').style.display = 'none';
+    resultScreen.style.display = 'block';
 }
+
+document.getElementById('replayButton').addEventListener('click', () => {
+    userChoices = [];
+    document.getElementById('resultScreen').style.display = 'none';
+    document.getElementById('startScreen').style.display = 'block';
+});
