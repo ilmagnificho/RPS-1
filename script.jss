@@ -8,7 +8,7 @@ function userSelect(choice) {
     document.getElementById("user-choice").innerText = `유저 선택: ${choice}`;
 }
 
-// 유저 "하나빼기"
+// 유저 "하나빼기" 선택
 function userRemoveChoice(remove) {
     if (!userChoice) {
         alert("먼저 가위, 바위, 보 중 하나를 선택하세요!");
