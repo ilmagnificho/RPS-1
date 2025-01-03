@@ -2,15 +2,22 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
+    background-color: #e0f7fa;
 }
 
-#choices img, #minusOne img {
+#startScreen {
+    background-color: #4caf50;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+#choices img, #minusChoices img {
     width: 100px;
     margin: 10px;
     cursor: pointer;
 }
 
-#countdown {
+#countdown, #minusCountdown {
     margin: 20px;
     font-size: 30px;
 }
