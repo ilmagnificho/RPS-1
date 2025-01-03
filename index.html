@@ -7,20 +7,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Rock Paper Scissors - Minus One Game</h1>
-    <div id="choices">
-        <img src="rock.png" id="rock" alt="Rock" />
-        <img src="paper.png" id="paper" alt="Paper" />
-        <img src="scissors.png" id="scissors" alt="Scissors" />
+    <div id="startScreen">
+        <h1>피투를 이겨라 가위바위보</h1>
+        <button id="startButton">GAME START</button>
     </div>
-    <div id="countdown" style="font-size: 24px;"></div>
-    <div id="minusOne" style="display: none;">
+
+    <div id="choiceScreen" style="display: none;">
+        <h2>Select Two Options</h2>
+        <div id="choices">
+            <img src="rock.png" id="rock" alt="Rock" />
+            <img src="paper.png" id="paper" alt="Paper" />
+            <img src="scissors.png" id="scissors" alt="Scissors" />
+        </div>
+        <div id="countdown" style="font-size: 24px;"></div>
+    </div>
+
+    <div id="minusOneScreen" style="display: none;">
         <h2>Select One to Remove</h2>
-        <img src="rock.png" id="removeRock" alt="Remove Rock" />
-        <img src="paper.png" id="removePaper" alt="Remove Paper" />
-        <img src="scissors.png" id="removeScissors" alt="Remove Scissors" />
+        <div id="minusChoices">
+            <img src="rock.png" id="removeRock" alt="Remove Rock" />
+            <img src="paper.png" id="removePaper" alt="Remove Paper" />
+            <img src="scissors.png" id="removeScissors" alt="Remove Scissors" />
+        </div>
+        <div id="minusCountdown" style="font-size: 24px;"></div>
     </div>
-    <div id="result"></div>
+
+    <div id="resultScreen" style="display: none;">
+        <h2 id="resultMessage"></h2>
+        <button id="replayButton">Play Again</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
