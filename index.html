@@ -9,6 +9,8 @@
 <body>
     <div class="game-container">
         <h1>가위바위보 하나빼기</h1>
+
+        <!-- 유저 선택 -->
         <div class="selection">
             <h2>유저 선택</h2>
             <button class="choice-btn" onclick="userSelect('가위')">가위</button>
@@ -16,6 +18,7 @@
             <button class="choice-btn" onclick="userSelect('보')">보</button>
         </div>
 
+        <!-- 유저 하나빼기 -->
         <div class="removal">
             <h2>유저 하나빼기</h2>
             <button class="choice-btn" onclick="userRemoveChoice('가위')">가위</button>
@@ -23,12 +26,20 @@
             <button class="choice-btn" onclick="userRemoveChoice('보')">보</button>
         </div>
 
+        <!-- 결과 표시 -->
         <div class="results">
             <h2>결과</h2>
             <div id="user-choice">유저 선택: </div>
             <div id="user-remove">유저 뺀 것: </div>
+            <div id="computer-choice">컴퓨터 선택: </div>
+            <div id="computer-remove">컴퓨터 뺀 것: </div>
+            <div id="final-result">게임 결과: </div>
         </div>
+
+        <!-- 게임 다시 시작 -->
+        <button class="play-again-btn" onclick="resetGame()">다시 하기</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
