@@ -3,40 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors - Minus One Game</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>가위바위보 하나빼기</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="startScreen">
-        <h1>피투를 이겨라 가위바위보</h1>
-        <button id="startButton">GAME START</button>
-    </div>
-
-    <div id="choiceScreen" style="display: none;">
-        <h2>Select Two Options</h2>
-        <div id="choices">
-            <img src="rock.png" id="rock" alt="Rock" />
-            <img src="paper.png" id="paper" alt="Paper" />
-            <img src="scissors.png" id="scissors" alt="Scissors" />
+    <div class="game-container">
+        <h1>가위바위보 하나빼기</h1>
+        <div class="selection">
+            <h2>유저 선택</h2>
+            <button class="choice-btn" onclick="userSelect('가위')">가위</button>
+            <button class="choice-btn" onclick="userSelect('바위')">바위</button>
+            <button class="choice-btn" onclick="userSelect('보')">보</button>
         </div>
-        <div id="countdown" style="font-size: 24px;"></div>
-    </div>
 
-    <div id="minusOneScreen" style="display: none;">
-        <h2>Select One to Remove</h2>
-        <div id="minusChoices">
-            <img src="rock.png" id="removeRock" alt="Remove Rock" />
-            <img src="paper.png" id="removePaper" alt="Remove Paper" />
-            <img src="scissors.png" id="removeScissors" alt="Remove Scissors" />
+        <div class="removal">
+            <h2>유저 하나빼기</h2>
+            <button class="choice-btn" onclick="userRemoveChoice('가위')">가위</button>
+            <button class="choice-btn" onclick="userRemoveChoice('바위')">바위</button>
+            <button class="choice-btn" onclick="userRemoveChoice('보')">보</button>
         </div>
-        <div id="minusCountdown" style="font-size: 24px;"></div>
-    </div>
 
-    <div id="resultScreen" style="display: none;">
-        <h2 id="resultMessage"></h2>
-        <button id="replayButton">Play Again</button>
-    </div>
+        <div class="results">
+            <h2>결과</h2>
+            <div id="user-choice">유저 선택: </div>
+            <div id="user-remove">유저 뺀 것: </div>
+            <div id="computer-choice">컴퓨터 선택: </div>
+            <div id="computer-remove">컴퓨터 뺀 것: </div>
+            <div id="final-result">게임 결과: </div>
+        </div>
 
+        <button class="play-again-btn" onclick="resetGame()">다시 하기</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
