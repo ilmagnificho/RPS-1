@@ -1,0 +1,16 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#choices img, #minusOne img {
+    width: 100px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#countdown {
+    margin: 20px;
+    font-size: 30px;
+}
